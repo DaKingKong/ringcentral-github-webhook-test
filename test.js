@@ -3,7 +3,7 @@ const git = simpleGit();
 
 async function test() {
     try {
-        await git.add('*').commit("test");
+        await git.add('*').commit("test").push();
     }
     catch (e) {
         console.log(e);
