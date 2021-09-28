@@ -66,7 +66,7 @@ async function test(answers) {
             token: process.env.INPUT_TOKEN
           });
           console.log(4);
-        await git.pull();
+        // await git.pull();
     }
     catch (e) {
         console.log(e);
