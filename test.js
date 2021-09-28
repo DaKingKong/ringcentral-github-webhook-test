@@ -57,11 +57,15 @@ async function test(answers) {
         }
         const newVersionNumber = `${major}.${minor}.${patch}`;
         packageJson.version = newVersionNumber;
+        console.log(1)
         await fs.writeFile(filePath, JSON.stringify(packageJson, null, 4));
+        console.log(2)
         await git.add('*').commit(answers.commit).push().addTag(packageJson.version);
+        console.log(3)
         await npmPublish({
             token: process.env.NPM_TOKEN
           });
+          console.log(4)
     }
     catch (e) {
         console.log(e);
