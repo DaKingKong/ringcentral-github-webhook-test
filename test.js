@@ -5,11 +5,11 @@ const fs = require('fs');
 
 async function test() {
     try {
-        await git.add('*').commit("test").push().addTag("tag1");
+        packageJson.version ="0.0.4";
+        fs.writeFile('./package.json', JSON.stringify(packageJson, null, 4), ()=>{});
+        await git.add('*').commit("test").push().addTag(packageJson.version);
         //const diffSummary = await git.diff();
         
-        // packageJson.version ="0.0.3";
-        // fs.writeFile('./package.json', JSON.stringify(packageJson, null, 4), ()=>{});
     }
     catch (e) {
         console.log(e);
