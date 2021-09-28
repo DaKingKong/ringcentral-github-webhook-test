@@ -1,6 +1,6 @@
 {
     "name": "ringcentral-github-webhook-test",
-    "version": "0.0.4",
+    "version": "1.0.4",
     "description": "",
     "bin": "test.js",
     "main": "test.js",

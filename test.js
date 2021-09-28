@@ -7,10 +7,22 @@ const commander = require('commander');
 const program = new commander.Command();
 
 program
-    .command('publishMajor')
-    .action(()=>{
-
+    .command('major')
+    .action(() => {
+        test('major');
     });
+program
+    .command('minor')
+    .action(() => {
+        test('minor');
+    });
+program
+    .command('patch')
+    .action(() => {
+        test('patch');
+    });
+
+program.parse(process.argv);
 
 async function test(versionType) {
     try {
@@ -18,28 +30,23 @@ async function test(versionType) {
         let major = versionNumbers[0];
         let minor = versionNumbers[1];
         let patch = versionNumbers[2];
-        if(versionType === "major")
-        {
-            major = Number(major)++;
+        if (versionType === "major") {
+            major = Number(major) + 1;
         }
-        else if(versionType === "minor")
-        {
+        else if (versionType === "minor") {
             minor = Number(minor)++;
         }
-        else if(versionType === "patch")
-        {
+        else if (versionType === "patch") {
             patch = Number(patch)++;
         }
         const newVersionNumber = `${major}.${minor}.${patch}`;
         packageJson.version = newVersionNumber;
-        fs.writeFile('./package.json', JSON.stringify(packageJson, null, 4), ()=>{});
+        fs.writeFile('./package.json', JSON.stringify(packageJson, null, 4), () => { });
         await git.add('*').commit("test").push().addTag(packageJson.version);
         //const diffSummary = await git.diff();
-        
+
     }
     catch (e) {
         console.log(e);
     }
 }
-
-test();
