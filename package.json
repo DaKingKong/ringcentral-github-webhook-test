@@ -1,6 +1,6 @@
 {
     "name": "ringcentral-github-webhook-test",
-    "version": "2.1.5",
+    "version": "2.2.5",
     "description": "",
     "bin": "test.js",
     "main": "test.js",
@@ -21,6 +21,7 @@
         "simple-git": "^2.45.1"
     },
     "dependencies": {
-        "commander": "^8.2.0"
+        "commander": "^8.2.0",
+        "inquirer": "^8.1.5"
     }
 }
