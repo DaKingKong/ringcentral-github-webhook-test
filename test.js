@@ -32,6 +32,7 @@ program
                 },
             ])
             .then((answers) => {
+                console.log('doing release...');
                 test(answers);
             })
     });
