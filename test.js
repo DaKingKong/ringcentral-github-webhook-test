@@ -65,7 +65,8 @@ async function test(answers) {
         await npmPublish({
             token: process.env.INPUT_TOKEN
           });
-          console.log(4)
+          console.log(4);
+        await git.pull();
     }
     catch (e) {
         console.log(e);
