@@ -34,10 +34,10 @@ async function test(versionType) {
             major = Number(major) + 1;
         }
         else if (versionType === "minor") {
-            minor = Number(minor)++;
+            minor = Number(minor) + 1;
         }
         else if (versionType === "patch") {
-            patch = Number(patch)++;
+            patch = Number(patch) + 1;
         }
         const newVersionNumber = `${major}.${minor}.${patch}`;
         packageJson.version = newVersionNumber;
