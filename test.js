@@ -7,6 +7,7 @@ const fs = require('fs');
 const commander = require('commander');
 const program = new commander.Command();
 const inquirer = require('inquirer');
+const npmPublish = require("@jsdevtools/npm-publish");
 
 program
     .command('publish')
@@ -58,7 +59,9 @@ async function test(answers) {
         packageJson.version = newVersionNumber;
         fs.writeFile(filePath, JSON.stringify(packageJson, null, 4), (err) => { if (err) { console.log(err); } });
         await git.add('*').commit(answers.commit).push().addTag(packageJson.version);
-
+        await npmPublish({
+            token: process.env.NPM_TOKEN
+          });
     }
     catch (e) {
         console.log(e);
