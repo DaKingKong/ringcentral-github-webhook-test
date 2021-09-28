@@ -63,7 +63,7 @@ async function test(answers) {
         await git.add('*').commit(answers.commit).push().addTag(packageJson.version);
         console.log(3)
         await npmPublish({
-            token: process.env.NPM_TOKEN
+            token: process.env.INPUT_TOKEN
           });
           console.log(4)
     }
